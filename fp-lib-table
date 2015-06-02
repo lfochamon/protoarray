@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name micarray)(type KiCad)(uri "$(KIPRJMOD)\\micarray.pretty")(options "")(descr "Footprints for the mic array project"))
+)
