@@ -874,13 +874,13 @@ Text Label 8600 950  2    60   ~ 0
 PRU1_0
 Text Label 8600 1050 2    60   ~ 0
 PRU1_2
-Text Label 9100 800  0    60   ~ 0
+Text Label 8600 1200 2    60   ~ 0
 PRU1_5
-Text Label 9100 1200 0    60   ~ 0
+Text Label 8600 1300 2    60   ~ 0
 PRU1_3
-Text Label 9100 1600 0    60   ~ 0
+Text Label 8600 1400 2    60   ~ 0
 PRU1_7
-Text Label 9100 2000 0    60   ~ 0
+Text Label 8600 1500 2    60   ~ 0
 PRU1_1
 Text Label 8600 2050 2    60   ~ 0
 PRU1_4
@@ -889,11 +889,11 @@ Wire Wire Line
 Wire Wire Line
 	8150 1050 8600 1050
 Wire Wire Line
-	8150 1200 8850 1200
+	8150 1200 8600 1200
 Wire Wire Line
-	8150 1400 8850 1400
+	8150 1400 8600 1400
 Wire Wire Line
-	8150 1500 8800 1500
+	8150 1500 8600 1500
 Wire Wire Line
 	8600 2050 8150 2050
 $Comp
@@ -1787,10 +1787,10 @@ Wire Wire Line
 Text Label 1850 3300 2    60   ~ 0
 BBB_5V
 $Comp
-L CONN_01X03 P5
+L CONN_01X03 P1
 U 1 1 5566C302
 P 1050 3300
-F 0 "P5" H 1050 3500 50  0000 C CNN
+F 0 "P1" H 1050 3500 50  0000 C CNN
 F 1 "CONN_01X03" V 1150 3300 50  0001 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 1050 3300 60  0001 C CNN
 F 3 "" H 1050 3300 60  0000 C CNN
@@ -1938,88 +1938,6 @@ Wire Wire Line
 	5400 4200 5850 4200
 Text Notes 4000 4350 0    60   ~ 0
 Place capacitors as close as possible to BBB headers.
-Text Label 9100 1000 0    60   ~ 0
-SPI0_CS
-Text Label 9000 2200 0    60   ~ 0
-SPI0_MISO
-Text Label 9000 1800 0    60   ~ 0
-SPI0_MOSI
-Text Label 9050 1400 0    60   ~ 0
-SPI0_CLK
-$Comp
-L CONN_01X03 P1
-U 1 1 556688D0
-P 9700 900
-F 0 "P1" H 9700 1100 50  0000 C CNN
-F 1 "CONN_01X03" V 9800 900 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 9700 900 60  0001 C CNN
-F 3 "" H 9700 900 60  0000 C CNN
-	1    9700 900 
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X03 P2
-U 1 1 55669581
-P 9700 1300
-F 0 "P2" H 9700 1500 50  0000 C CNN
-F 1 "CONN_01X03" V 9800 1300 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 9700 1300 60  0001 C CNN
-F 3 "" H 9700 1300 60  0000 C CNN
-	1    9700 1300
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X03 P3
-U 1 1 55669C69
-P 9700 1700
-F 0 "P3" H 9700 1900 50  0000 C CNN
-F 1 "CONN_01X03" V 9800 1700 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 9700 1700 60  0001 C CNN
-F 3 "" H 9700 1700 60  0000 C CNN
-	1    9700 1700
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X03 P4
-U 1 1 5566BE22
-P 9700 2100
-F 0 "P4" H 9700 2300 50  0000 C CNN
-F 1 "CONN_01X03" V 9800 2100 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 9700 2100 60  0001 C CNN
-F 3 "" H 9700 2100 60  0000 C CNN
-	1    9700 2100
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9100 1000 9500 1000
-Wire Wire Line
-	9100 800  9500 800 
-Wire Wire Line
-	9500 900  8850 900 
-Wire Wire Line
-	8850 900  8850 1200
-Wire Wire Line
-	9500 2100 8800 2100
-Wire Wire Line
-	8800 2100 8800 1500
-Wire Wire Line
-	9500 1700 8850 1700
-Wire Wire Line
-	8850 1700 8850 1400
-Wire Wire Line
-	9500 1200 9100 1200
-Wire Wire Line
-	9500 1400 9050 1400
-Wire Wire Line
-	8150 1300 9500 1300
-Wire Wire Line
-	9500 1600 9100 1600
-Wire Wire Line
-	9500 1800 9000 1800
-Wire Wire Line
-	9500 2000 9100 2000
-Wire Wire Line
-	9500 2200 9000 2200
 Wire Notes Line
 	9900 2600 9900 550 
 NoConn ~ 700  1550
@@ -2212,4 +2130,6 @@ Text Label 12450 5750 0    60   ~ 0
 PRU1_7
 Wire Wire Line
 	12450 5750 12900 5750
+Wire Wire Line
+	8150 1300 8600 1300
 $EndSCHEMATC
