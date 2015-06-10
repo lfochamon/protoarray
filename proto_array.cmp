@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 02/06/2015 15:56:27
+Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 10/06/2015 18:01:23
 
 BeginCmp
 TimeStamp = /55650AFC;
@@ -382,7 +382,7 @@ BeginCmp
 TimeStamp = /55650825;
 Reference = U1;
 ValeurCmp = ADS131E08;
-IdModule  = micarray:LQFP-64_12x12_Pitch0.5mm;
+IdModule  = micarray:LQFP-64_12x12_Pitch0.5mm_NoFid;
 EndCmp
 
 BeginCmp

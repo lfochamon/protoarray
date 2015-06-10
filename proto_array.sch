@@ -50,7 +50,7 @@ U 1 1 55650825
 P 6150 6100
 F 0 "U1" H 6150 7000 60  0000 C CNN
 F 1 "ADS131E08" H 6150 5150 60  0000 C CNN
-F 2 "micarray:LQFP-64_12x12_Pitch0.5mm" H 6000 6650 60  0001 C CNN
+F 2 "micarray:LQFP-64_12x12_Pitch0.5mm_NoFid" H 6000 6650 60  0001 C CNN
 F 3 "" H 6000 6650 60  0000 C CNN
 	1    6150 6100
 	1    0    0    -1  
@@ -61,7 +61,7 @@ U 2 1 55650857
 P 1900 1650
 F 0 "U1" H 950 2150 60  0000 C CNN
 F 1 "ADS131E08" H 900 1100 60  0000 C CNN
-F 2 "micarray:LQFP-64_12x12_Pitch0.5mm" H 1750 2200 60  0001 C CNN
+F 2 "micarray:LQFP-64_12x12_Pitch0.5mm_NoFid" H 1750 2200 60  0001 C CNN
 F 3 "" H 1750 2200 60  0000 C CNN
 	2    1900 1650
 	1    0    0    -1  
@@ -72,7 +72,7 @@ U 3 1 556508B2
 P 7600 1550
 F 0 "U1" H 7600 2300 60  0000 C CNN
 F 1 "ADS131E08" H 7600 750 60  0000 C CNN
-F 2 "micarray:LQFP-64_12x12_Pitch0.5mm" H 7450 2100 60  0001 C CNN
+F 2 "micarray:LQFP-64_12x12_Pitch0.5mm_NoFid" H 7450 2100 60  0001 C CNN
 F 3 "" H 7450 2100 60  0000 C CNN
 	3    7600 1550
 	1    0    0    -1  
@@ -871,19 +871,19 @@ Wire Wire Line
 Wire Wire Line
 	11050 4850 10500 4850
 Text Label 8600 950  2    60   ~ 0
-PRU1_0
-Text Label 8600 1050 2    60   ~ 0
-PRU1_2
-Text Label 8600 1200 2    60   ~ 0
-PRU1_5
-Text Label 8600 1300 2    60   ~ 0
-PRU1_3
-Text Label 8600 1400 2    60   ~ 0
-PRU1_7
-Text Label 8600 1500 2    60   ~ 0
-PRU1_1
-Text Label 8600 2050 2    60   ~ 0
 PRU1_4
+Text Label 8600 1050 2    60   ~ 0
+PRU1_1
+Text Label 8600 1200 2    60   ~ 0
+PRU1_7
+Text Label 8600 1300 2    60   ~ 0
+PRU1_5
+Text Label 8600 1400 2    60   ~ 0
+PRU1_0
+Text Label 8600 1500 2    60   ~ 0
+PRU1_3
+Text Label 8600 2050 2    60   ~ 0
+PRU1_2
 Wire Wire Line
 	8150 950  8600 950 
 Wire Wire Line
