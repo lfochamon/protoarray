@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 10/06/2015 19:05:28
+Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 11/06/2015 13:45:33
 
 BeginCmp
 TimeStamp = /55650AFC;
@@ -249,56 +249,56 @@ BeginCmp
 TimeStamp = /55679488;
 Reference = MIC1;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686CF2;
 Reference = MIC2;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /556867C5;
 Reference = MIC3;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686EAF;
 Reference = MIC4;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686942;
 Reference = MIC5;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /556870FE;
 Reference = MIC6;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686ADD;
 Reference = MIC7;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
 TimeStamp = /556872AC;
 Reference = MIC8;
 ValeurCmp = ELECTRET;
-IdModule  = Discret:BUZ3-5;
+IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
 EndCmp
 
 BeginCmp
