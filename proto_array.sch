@@ -2050,19 +2050,6 @@ Wire Wire Line
 Connection ~ 2950 3950
 Text Notes 800  4850 0    60   ~ 0
 ERC warnings relative to power output pins\nbeing connected to bidirectional pins on the\nBBB headers can safely be ignored.
-$Comp
-L TESTPOINT TP2
-U 1 1 5567DDB5
-P 2550 700
-F 0 "TP2" H 2800 700 40  0000 C CNN
-F 1 "TESTPOINT" H 2600 600 40  0001 C CNN
-F 2 "Measurement_Points:Measurement_Point_Round-SMD-Pad_Big" H 2750 700 60  0001 C CNN
-F 3 "" H 2750 700 60  0000 C CNN
-	1    2550 700 
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2500 700  2550 700 
 Wire Wire Line
 	5550 950  5550 850 
 Wire Wire Line

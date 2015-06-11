@@ -1,4 +1,4 @@
-Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 10/06/2015 18:01:23
+Cmp-Mod V01 Created by Cvpcb (after 2015-may-25 BZR unknown)-product   date = 10/06/2015 19:05:28
 
 BeginCmp
 TimeStamp = /55650AFC;
@@ -367,13 +367,6 @@ EndCmp
 BeginCmp
 TimeStamp = /556642CA;
 Reference = TP1;
-ValeurCmp = TESTPOINT;
-IdModule  = Measurement_Points:Measurement_Point_Round-SMD-Pad_Big;
-EndCmp
-
-BeginCmp
-TimeStamp = /5567DDB5;
-Reference = TP2;
 ValeurCmp = TESTPOINT;
 IdModule  = Measurement_Points:Measurement_Point_Round-SMD-Pad_Big;
 EndCmp
