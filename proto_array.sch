@@ -630,10 +630,6 @@ NoConn ~ 11050 5550
 NoConn ~ 11050 5650
 NoConn ~ 11050 5750
 NoConn ~ 11050 5850
-Text Label 10600 1700 0    60   ~ 0
-SPI0_CS
-Text Label 10500 4650 0    60   ~ 0
-SPI0_MOSI
 $Comp
 L BEAGLEBONEBLACK U2
 U 3 1 55665DDE
@@ -645,10 +641,6 @@ F 3 "" H 11400 700 60  0000 C CNN
 	3    11600 1950
 	1    0    0    -1  
 $EndComp
-Text Label 10500 1900 0    60   ~ 0
-SPI0_MISO
-Text Label 10500 4850 0    60   ~ 0
-SPI0_CLK
 Wire Wire Line
 	12900 5850 12450 5850
 Wire Wire Line
@@ -862,14 +854,6 @@ Wire Wire Line
 	10500 6050 11050 6050
 Wire Wire Line
 	11050 5950 10950 5950
-Wire Wire Line
-	11050 1700 10600 1700
-Wire Wire Line
-	11050 4650 10500 4650
-Wire Wire Line
-	11050 1900 10500 1900
-Wire Wire Line
-	11050 4850 10500 4850
 Text Label 8600 950  2    60   ~ 0
 PRU1_4
 Text Label 8600 1050 2    60   ~ 0
@@ -2119,4 +2103,9 @@ Wire Wire Line
 	12450 5750 12900 5750
 Wire Wire Line
 	8150 1300 8600 1300
+NoConn ~ 11050 1700
+NoConn ~ 11050 1900
+NoConn ~ 12900 2800
+NoConn ~ 11050 4650
+NoConn ~ 11050 4850
 $EndSCHEMATC
