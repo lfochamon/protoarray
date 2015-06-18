@@ -886,7 +886,7 @@ U 1 1 55679488
 P 850 6100
 F 0 "MIC1" H 850 6350 60  0000 C CNN
 F 1 "ELECTRET" H 850 5850 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 750 6100 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 750 6100 60  0001 C CNN
 F 3 "" H 750 6100 60  0000 C CNN
 	1    850  6100
 	1    0    0    -1  
@@ -1015,7 +1015,7 @@ U 1 1 556867C5
 P 850 7600
 F 0 "MIC3" H 850 7850 60  0000 C CNN
 F 1 "ELECTRET" H 850 7350 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 750 7600 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 750 7600 60  0001 C CNN
 F 3 "" H 750 7600 60  0000 C CNN
 	1    850  7600
 	1    0    0    -1  
@@ -1108,7 +1108,7 @@ U 1 1 55686942
 P 850 9100
 F 0 "MIC5" H 850 9350 60  0000 C CNN
 F 1 "ELECTRET" H 850 8850 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 750 9100 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 750 9100 60  0001 C CNN
 F 3 "" H 750 9100 60  0000 C CNN
 	1    850  9100
 	1    0    0    -1  
@@ -1201,7 +1201,7 @@ U 1 1 55686ADD
 P 850 10600
 F 0 "MIC7" H 850 10850 60  0000 C CNN
 F 1 "ELECTRET" H 850 10350 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 750 10600 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 750 10600 60  0001 C CNN
 F 3 "" H 750 10600 60  0000 C CNN
 	1    850  10600
 	1    0    0    -1  
@@ -1294,7 +1294,7 @@ U 1 1 55686CF2
 P 3050 6100
 F 0 "MIC2" H 3050 6350 60  0000 C CNN
 F 1 "ELECTRET" H 3050 5850 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 2950 6100 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 2950 6100 60  0001 C CNN
 F 3 "" H 2950 6100 60  0000 C CNN
 	1    3050 6100
 	1    0    0    -1  
@@ -1387,7 +1387,7 @@ U 1 1 55686EAF
 P 3050 7600
 F 0 "MIC4" H 3050 7850 60  0000 C CNN
 F 1 "ELECTRET" H 3050 7350 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 2950 7600 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 2950 7600 60  0001 C CNN
 F 3 "" H 2950 7600 60  0000 C CNN
 	1    3050 7600
 	1    0    0    -1  
@@ -1480,7 +1480,7 @@ U 1 1 556870FE
 P 3050 9100
 F 0 "MIC6" H 3050 9350 60  0000 C CNN
 F 1 "ELECTRET" H 3050 8850 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 2950 9100 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 2950 9100 60  0001 C CNN
 F 3 "" H 2950 9100 60  0000 C CNN
 	1    3050 9100
 	1    0    0    -1  
@@ -1573,7 +1573,7 @@ U 1 1 556872AC
 P 3050 10600
 F 0 "MIC8" H 3050 10850 60  0000 C CNN
 F 1 "ELECTRET" H 3050 10350 60  0000 C CNN
-F 2 "Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear" H 2950 10600 60  0001 C CNN
+F 2 "micarray:Electret_1mm" H 2950 10600 60  0001 C CNN
 F 3 "" H 2950 10600 60  0000 C CNN
 	1    3050 10600
 	1    0    0    -1  
@@ -1776,7 +1776,7 @@ U 1 1 5566C302
 P 1050 3300
 F 0 "P1" H 1050 3500 50  0000 C CNN
 F 1 "CONN_01X03" V 1150 3300 50  0001 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03" H 1050 3300 60  0001 C CNN
+F 2 "micarray:Pin_Header_01x03" H 1050 3300 60  0001 C CNN
 F 3 "" H 1050 3300 60  0000 C CNN
 	1    1050 3300
 	-1   0    0    -1  

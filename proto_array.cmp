@@ -249,63 +249,63 @@ BeginCmp
 TimeStamp = /55679488;
 Reference = MIC1;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686CF2;
 Reference = MIC2;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /556867C5;
 Reference = MIC3;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686EAF;
 Reference = MIC4;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686942;
 Reference = MIC5;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /556870FE;
 Reference = MIC6;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /55686ADD;
 Reference = MIC7;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /556872AC;
 Reference = MIC8;
 ValeurCmp = ELECTRET;
-IdModule  = Capacitors_Elko_ThroughHole:Elko_vert_20x10mm_RM2.5_CopperClear;
+IdModule  = micarray:Electret_1mm;
 EndCmp
 
 BeginCmp
 TimeStamp = /5566C302;
 Reference = P1;
 ValeurCmp = CONN_01X03;
-IdModule  = Pin_Headers:Pin_Header_Straight_1x03;
+IdModule  = micarray:Pin_Header_01x03;
 EndCmp
 
 BeginCmp
