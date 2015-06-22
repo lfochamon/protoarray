@@ -1,0 +1,10 @@
+#!/bin/bash
+# Build and install device tree overlay
+../adc_driver/00build_dto
+
+# Build PRU firmwares
+pasm -b pru/adi131e08_pru0.asm
+pasm -b pru/adi131e08_pru1.asm
+
+# Build main program
+gcc pru/pru.c server/tcpServer.c main.c -o adi -lpthread -lprussdrv -O2 -Wall
