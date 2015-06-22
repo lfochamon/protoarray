@@ -12,14 +12,14 @@
 #include "tcpServer.h"
 #include "pru.h"
 
-#define MSG_SIZE (1024*1024)
+#define MSG_SIZE (1000*1024)
 #define HANDSHAKE_SIZE 5
-#define N_BUFFER 1
+#define N_BUFFER 10
 
 #define PRU0 0
 #define PRU1 1
 
-#define RAM_BYTES MSG_SIZE
+#define RAM_BYTES (1024*1024)
 #define RAM_SIZE (RAM_BYTES / 4)
 #define MAP_SIZE (RAM_BYTES + 4096UL)
 #define PAGE_MASK (4096UL - 1)        /* BeagleBone Black page size: 4096 */
@@ -186,7 +186,7 @@ int main(int argc, char *argv[]){
         /* Wait for PRU_EVTOUT_0 and send shared RAM data */
         prussdrv_pru_wait_event(PRU_EVTOUT_0);
         prussdrv_pru_clear_event(PRU_EVTOUT_0, PRU0_ARM_INTERRUPT);
-        sendall(clientSocket, ram_addr+100, MSG_SIZE);
+        sendall(clientSocket, ram_addr + MSG_SIZE, MSG_SIZE);
     }
 
 
