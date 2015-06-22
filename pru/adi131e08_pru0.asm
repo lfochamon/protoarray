@@ -1,6 +1,10 @@
 .origin 0                        // start of program in PRU memory
 
 /* Interrupt */
+#define MSG_SIZE 1000*1024
+#define LOOPS_PER_MSG MSG_SIZE/100
+
+/* Interrupt */
 #define PRU_INT_VALID 32
 #define PRU0_PRU1_INTERRUPT 1   // PRU_EVTOUT_
 #define PRU1_PRU0_INTERRUPT 2   // PRU_EVTOUT_
@@ -37,36 +41,42 @@ MOV     r1, 0x0100      // c28 = 0x00nnnn00
 SBBO    r1, r0, 0, 4    // Store r1 into CTBIR0 (pointer r0)
 
 /* Setup auxiliary registers */
-MOV     r0, 18          // Load PRU1 interrupt number in r0 (PRU SRM p. 222)
-LBCO    r28, c24, 0, 4  // Load DDR RAM address in r28
+MOV     r0, 18              // Load PRU1 interrupt number in r0 (PRU SRM p. 222)
+LBCO    r28, c24, 0, 4      // Load DDR RAM address in r28
+MOV     r27, LOOPS_PER_MSG  // Load number of loops per message in r27
 
 
 /* Start main loop */
-MAINLOOP:
-    MOV     r29, 0                  // Initialize byte counter in r29
+OUTTER_LOOP:
+    MOV     r29, 0                  // Initialize message buffer pointer in r29
 
-    WBS     R30, 30                 // Wait for PRU1 interrupt signal
-    SBCO    r0, C0, 0x24, 4         // Clear PRU1 interrupt
+    /* Fill message buffer 1 */
+    INNER_LOOP_1:
+        WBS     R30, 30                 // Wait for PRU1 interrupt signal
+        SBCO    r0, C0, 0x24, 4         // Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, r1, 100      // Retrieve data from scratch pad
-    SBCO    r1, r28, r29, 100       // Write data to DDR RAM
-    ADD     r29, r29, 100
+        XIN     XFR_BANK0, r1, 100      // Retrieve data from scratch pad
+        SBCO    r1, r28, r29, 100       // Write data to DDR RAM
+        ADD     r29, r29, 100
+        QBNE INNER_LOOP_1, r29, r27     // Loop if the message buffer has not been filled
 
-    /* Send interrupt to host*/
-    MOV     R31.b0, PRU_INT_VALID | PRU0_ARM_INTERRUPT
+    MOV     R31.b0, PRU_INT_VALID | PRU0_ARM_INTERRUPT  // Send interrupt to host
 
 
-    WBS     R30, 30                 // Wait for PRU1 interrupt signal
-    SBCO    r0, C0, 0x24, 4         // Clear PRU1 interrupt
+    /* Fill message buffer 2 */
+    INNER_LOOP_2:
+        WBS     R30, 30                 // Wait for PRU1 interrupt signal
+        SBCO    r0, C0, 0x24, 4         // Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, r1, 100      // Retrieve data from scratch pad
-    SBCO    r1, r28, r29, 100       // Write data to DDR RAM
-    ADD     r29, r29, 100
+        XIN     XFR_BANK0, r1, 100      // Retrieve data from scratch pad
+        SBCO    r1, r28, r29, 100       // Write data to DDR RAM
+        ADD     r29, r29, 100
+        QBNE INNER_LOOP_2, r29, r27     // Loop if the message buffer has not been filled
 
-    /* Send interrupt to host*/
-    MOV     R31.b0, PRU_INT_VALID | PRU0_ARM_INTERRUPT
+    MOV     R31.b0, PRU_INT_VALID | PRU0_ARM_INTERRUPT  // Send interrupt to host
 
-    QBA     MAINLOOP                // [TODO]: make loop conditional
+
+    QBA     OUTTER_LOOP                                 // [TODO]: make loop conditional
 
 
 /* Stop PRU */
