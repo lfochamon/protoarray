@@ -14,7 +14,7 @@
 
 #define MSG_SIZE (1024*1024)
 #define HANDSHAKE_SIZE 5
-#define N_BUFFER 500
+#define N_BUFFER 1
 
 #define PRU0 0
 #define PRU1 1
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]){
 
 
     /***** SERVER SET UP *****/
-    /* New TCP socket */
+    /* Open TCP socket */
     printf("Starting server to listen on port %d... ", PORT);
     fflush(stdout);
     clientSocket = getClientSocket();
@@ -191,8 +191,8 @@ int main(int argc, char *argv[]){
 
 
     /* PRU CLEAN UP */
-    pru_stop(PRU0);
     pru_stop(PRU1);
+    pru_stop(PRU0);
     pru_cleanup();
 
     /* SERVER CLEAN UP */
