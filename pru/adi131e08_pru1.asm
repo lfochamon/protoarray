@@ -1,27 +1,24 @@
-.origin 0                        // start of program in PRU memory
+; Delay
+    INS_PER_US          .set    200
+    INS_PER_DELAY_LOOP  .set    2
+    DELAY_US            .set    125 * (INS_PER_US / INS_PER_DELAY_LOOP)
 
-#define INS_PER_US 200
-#define INS_PER_DELAY_LOOP 2
-#define DELAY_US  119 * 1000 * (INS_PER_US / INS_PER_DELAY_LOOP)
+; Interrupt
+    PRU_INT_VALID       .set    32
+    PRU0_PRU1_INTERRUPT .set    1       ; PRU_EVTOUT_
+    PRU1_PRU0_INTERRUPT .set    2       ; PRU_EVTOUT_
+    PRU0_ARM_INTERRUPT  .set    3       ; PRU_EVTOUT_0
+    PRU1_ARM_INTERRUPT  .set    4       ; PRU_EVTOUT_1
+    ARM_PRU0_INTERRUPT  .set    5       ; PRU_EVTOUT_
+    ARM_PRU1_INTERRUPT  .set    6       ; PRU_EVTOUT_
 
-/* Interrupt */
-#define PRU_INT_VALID 32
-#define PRU0_PRU1_INTERRUPT 1   // PRU_EVTOUT_
-#define PRU1_PRU0_INTERRUPT 2   // PRU_EVTOUT_
-#define PRU0_ARM_INTERRUPT 3    // PRU_EVTOUT_0
-#define PRU1_ARM_INTERRUPT 4    // PRU_EVTOUT_1
-#define ARM_PRU0_INTERRUPT 5    // PRU_EVTOUT_
-#define ARM_PRU1_INTERRUPT 6    // PRU_EVTOUT_
+; Name PRU register banks
+    XFR_BANK0           .set    10
+    XFR_BANK1           .set    11
+    XFR_BANK2           .set    12
+    XFR_PRU             .set    14
 
-/* Name PRU register banks */
-#define XFR_BANK0 10
-#define XFR_BANK1 11
-#define XFR_BANK2 12
-#define XFR_PRU 14
-
-/* Start of main loop */
-MAINLOOP:
-    /* Wait and retrieve data */
+; Setup fake data
     MOV r1,  1
     MOV r2,  2
     MOV r3,  3
@@ -46,24 +43,22 @@ MAINLOOP:
     MOV r22, 22
     MOV r23, 23
     MOV r24, 24
-    MOV r25, 25
 
 
-    // Wait 119 ms
-    MOV     r2, DELAY_US
+; Start of main loop
+MAINLOOP:
+    ; Wait 119 ms
+    MOV     r25, DELAY_US
     DELAY:
-        SUB     r2, r2, 1
-        QBNE    DELAY, r2, 0
+        SUB     r25, r25, 1
+        QBNE    DELAY, r25, 0
 
 
-    XOUT    XFR_BANK0, R1, 100                          // Send data to scratch pad
-    MOV     R31.b0, PRU_INT_VALID | PRU1_PRU0_INTERRUPT // Send interrupt to PRU0
+    XOUT    XFR_BANK0, r1, 96                           ; Send data to scratch pad
+    MOV     R31.b0, PRU_INT_VALID | PRU1_PRU0_INTERRUPT ; Send interrupt to PRU0
 
-    QBA MAINLOOP        // [TODO]: make loop conditional
+    QBA MAINLOOP        ; [TODO]: make loop conditional
 
 
-/* Send interrupt to host*/
-MOV     R31.b0, PRU_INT_VALID | PRU1_ARM_INTERRUPT
-
-/* Stop PRU */
-HALT
+; Stop PRU
+    HALT
