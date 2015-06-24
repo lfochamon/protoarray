@@ -12,14 +12,14 @@
 #include "tcpServer.h"
 #include "pru.h"
 
-#define MSG_SIZE (1000*1024)
+#define MSG_SIZE (999*1024)
 #define HANDSHAKE_SIZE 5
 #define N_BUFFER 10
 
 #define PRU0 0
 #define PRU1 1
 
-#define RAM_BYTES (1024*1024)
+#define RAM_BYTES (2*1024*1024)
 #define RAM_SIZE (RAM_BYTES / 4)
 #define MAP_SIZE (RAM_BYTES + 4096UL)
 #define PAGE_MASK (4096UL - 1)        /* BeagleBone Black page size: 4096 */
@@ -154,7 +154,7 @@ int main(int argc, char *argv[]){
     }
 
     /* Set up the PRU data RAMs */
-    pru_mmap(0, 0, &pru0_mem);
+    pru_mmap(0, &pru0_mem);
     *(pru0_mem) = addr;
 
 
