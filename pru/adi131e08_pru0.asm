@@ -51,7 +51,7 @@ main:
 mainloop:
     LDI     r29, 0                  ; Initialize byte counter in r29
 
-    WBS     r30, 30                 ; Wait for PRU1 interrupt signal
+    WBS     r31, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
     XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad
@@ -62,7 +62,7 @@ mainloop:
     LDI     r31.b0, PRU_INT_VALID + PRU0_ARM_INTERRUPT
 
 
-    WBS     r30, 30                 ; Wait for PRU1 interrupt signal
+    WBS     r31, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
     XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad

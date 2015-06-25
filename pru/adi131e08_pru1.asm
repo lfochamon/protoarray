@@ -1,7 +1,7 @@
 ; Delay
 INS_PER_US          .set    200
 INS_PER_DELAY_LOOP  .set    2
-DELAY_US            .set    119 * (INS_PER_US / INS_PER_DELAY_LOOP)
+DELAY_US            .set    119 * 1000 * (INS_PER_US / INS_PER_DELAY_LOOP)
 
 ; Interrupt
 PRU_INT_VALID       .set    32
@@ -27,9 +27,6 @@ XFR_PRU             .set    14
 
 ; Program start
 main:
-
-; Start of main loop
-mainloop:
     ; Wait and retrieve data
     LDI r1,  1
     LDI r2,  2
@@ -58,15 +55,44 @@ mainloop:
     LDI r25, 25
 
 
+; Start of main loop
+mainloop:
+
     ; Wait 119 us
     LDI32   r0, DELAY_US
 delay:
-    SUB     r2, r0, 1
+    SUB     r0, r0, 1
     QBNE    delay, r0, 0
-
 
     XOUT    XFR_BANK0, &r1, 100                          ; Send data to scratch pad
     LDI     r31.b0, PRU_INT_VALID + PRU1_PRU0_INTERRUPT ; Send interrupt to PRU0
+
+    ; Wait and retrieve data
+    LDI r1,  0
+    LDI r2,  0
+    LDI r3,  0
+    LDI r4,  0
+    LDI r5,  0
+    LDI r6,  0
+    LDI r7,  0
+    LDI r8,  0
+    LDI r9,  0
+    LDI r10, 0
+    LDI r11, 0
+    LDI r12, 0
+    LDI r13, 0
+    LDI r14, 0
+    LDI r15, 0
+    LDI r16, 0
+    LDI r17, 0
+    LDI r18, 0
+    LDI r19, 0
+    LDI r20, 0
+    LDI r21, 0
+    LDI r22, 0
+    LDI r23, 0
+    LDI r24, 0
+    LDI r25, 0
 
     QBA mainloop            ; [TODO]: make loop conditional
 

@@ -64,5 +64,5 @@ full2 = b"".join(full2)
 print("The client received", grand_total, "B from the server.")
 
 if all(idx == int.from_bytes(c, 'little')-1 for idx, c in substr_iter(full1, 4)):
-    if all(idx == int.from_bytes(c, 'little')-1 for idx, c in substr_iter(full2, 4)):
+    if all(0 == int.from_bytes(c, 'little') for idx, c in substr_iter(full2, 4)):
         print("Messages passed the integrity check")
