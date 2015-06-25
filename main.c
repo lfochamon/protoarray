@@ -9,17 +9,18 @@
 #include <prussdrv.h>
 #include <pruss_intc_mapping.h>
 
-#include "tcpServer.h"
-#include "pru.h"
+#include "server/tcpServer.h"
+#include "pru/pru.h"
 
 #define MSG_SIZE (999*1024)
 #define HANDSHAKE_SIZE 5
-#define N_BUFFER 10
+#define N_BUFFER 50
 
 #define PRU0 0
 #define PRU1 1
 
-#define RAM_BYTES (2*1024*1024)
+#define BUFFER_SIZE (2*MSG_SIZE)
+#define RAM_BYTES BUFFER_SIZE
 #define RAM_SIZE (RAM_BYTES / 4)
 #define MAP_SIZE (RAM_BYTES + 4096UL)
 #define PAGE_MASK (4096UL - 1)        /* BeagleBone Black page size: 4096 */
@@ -53,7 +54,7 @@ int client_handshake(int clientSocket){
 
     /* Wait for client handshake */
     receiveData(clientSocket, readBuffer, HANDSHAKE_SIZE);
-    while(readBuffer == ""){
+    while(strcmp(readBuffer, "") == 0){
         receiveData(clientSocket, readBuffer, HANDSHAKE_SIZE);
     }
 
@@ -76,8 +77,6 @@ int main(int argc, char *argv[]){
     uint32_t *pru0_mem;
 
     int n, clientSocket;
-    socklen_t clientLength;
-    struct sockaddr_in clientAddress;
 
 
     /* PRU code only works if executed as root */
@@ -148,7 +147,7 @@ int main(int argc, char *argv[]){
     if(pru_setup() != 0) {
         printf("Error setting up the PRU.\n");
         pru_cleanup();
-        close(serverSocket);
+        close(clientSocket);
         munmap(mem_map, RAM_SIZE);
         exit(EXIT_FAILURE);
     }
@@ -160,8 +159,8 @@ int main(int argc, char *argv[]){
 
     /***** BEGIN MAIN PROGRAM *****/
     /* Start up PRU0 */
-    if (pru_start(PRU0, "./adi131e08_pru0.bin") != 0) {
-        fprintf(stderr, "Error starting the PRU.\n");
+    if (pru_start(PRU0, "pru/adi131e08_pru0.bin") != 0) {
+        fprintf(stderr, "Error starting PRU0.\n");
         close(clientSocket);
         pru_cleanup();
         munmap(mem_map, RAM_SIZE);
@@ -169,8 +168,8 @@ int main(int argc, char *argv[]){
     }
 
     /* Start up PRU1 */
-    if (pru_start(PRU1, "./adi131e08_pru1.bin") != 0) {
-        fprintf(stderr, "Error starting the PRU.\n");
+    if (pru_start(PRU1, "pru/adi131e08_pru1.bin") != 0) {
+        fprintf(stderr, "Error starting PRU1.\n");
         close(clientSocket);
         pru_cleanup();
         munmap(mem_map, RAM_SIZE);
