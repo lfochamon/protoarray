@@ -51,7 +51,6 @@ int pru_start(int pru_number, char *program)
 {
   /* Load and execute the PRU program */
   if (prussdrv_exec_program(pru_number, program) != 0) {
-    fprintf(stderr, "An error occurred while loading and executing the PRU program.");
     return(-1);
   }
 
