@@ -60,12 +60,12 @@ mainloop:
 
     ; Wait 119 us
     LDI32   r0, DELAY_US
-    DELAY:
-        SUB     r2, r0, 1
-        QBNE    DELAY, r0, 0
+delay:
+    SUB     r2, r0, 1
+    QBNE    delay, r0, 0
 
 
-    XOUT    XFR_BANK0, r1, 100                          ; Send data to scratch pad
+    XOUT    XFR_BANK0, &r1, 100                          ; Send data to scratch pad
     LDI     r31.b0, PRU_INT_VALID + PRU1_PRU0_INTERRUPT ; Send interrupt to PRU0
 
     QBA mainloop            ; [TODO]: make loop conditional
