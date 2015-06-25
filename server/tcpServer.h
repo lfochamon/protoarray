@@ -13,7 +13,6 @@
 
 
 // Public functions prototypes
-void socketInfo(int socketfd);
 int getClientSocket();
 int receiveData(int clientSocket, char *readBuffer, int size);
 int receiveall(int clientSocket, char *readBuffer, int size);
