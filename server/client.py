@@ -1,8 +1,8 @@
 import socket, sys
 
-# HOST = '192.168.7.2'  # Remote host
+HOST = '192.168.7.2'  # Remote host
 # HOST = '192.168.0.111'  # Remote host
-HOST = '192.168.0.2'    # Remote host
+# HOST = '192.168.0.2'    # Remote host
 PORT = 54321            # Remote port
 MSG_SIZE = 100
 
@@ -33,7 +33,7 @@ while total < MSG_SIZE:
         full1.append(data)
         total = total + len(data)
     except socket.timeout:
-        print("The socket timed out during buffer", i)
+        print("The socket timed out during buffer 1.")
         sock.close()
         sys.exit(-1)
 
@@ -47,7 +47,7 @@ while total < MSG_SIZE:
         full2.append(data)
         total = total + len(data)
     except socket.timeout:
-        print("The socket timed out during buffer", i)
+        print("The socket timed out during buffer 2.")
         sock.close()
         sys.exit(-1)
 
@@ -61,8 +61,8 @@ sock.close()
 full1 = b"".join(full1)
 full2 = b"".join(full2)
 
-print("The client received", grand_total "B from the server.")
+print("The client received", grand_total, "B from the server.")
 
 if all(idx == int.from_bytes(c, 'little')-1 for idx, c in substr_iter(full1, 4)):
-    if all(idx == int.from_bytes(c, 'little')-1 for idx, c in substr_iter(full1, 4)):
+    if all(idx == int.from_bytes(c, 'little')-1 for idx, c in substr_iter(full2, 4)):
         print("Messages passed the integrity check")
