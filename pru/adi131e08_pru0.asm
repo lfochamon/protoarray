@@ -54,7 +54,7 @@ mainloop:
     WBS     r30, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, &r1, 100      ; Retrieve data from scratch pad
+    XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad
     SBBO    &r1, r28, r29, 100      ; Write data to DDR RAM
     ADD     r29, r29, 100
 
@@ -65,7 +65,7 @@ mainloop:
     WBS     r30, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, &r1, 100      ; Retrieve data from scratch pad
+    XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad
     SBBO    &r1, r28, r29, 100      ; Write data to DDR RAM
     ADD     r29, r29, 100
 

@@ -53,7 +53,7 @@ int client_handshake(int clientSocket){
 
     /* Wait for client handshake */
     receiveData(clientSocket, readBuffer, HANDSHAKE_SIZE);
-    while(strcmp(readBuffer, "")){
+    while(strcmp(readBuffer, "") == 0){
         receiveData(clientSocket, readBuffer, HANDSHAKE_SIZE);
     }
 
@@ -133,7 +133,7 @@ int main(int argc, char *argv[]){
     fflush(stdout);
 
     if(client_handshake(clientSocket) != 0) {
-        printf("error.");
+        printf("error.\n");
         close(clientSocket);
         munmap(mem_map, RAM_SIZE);
         exit(EXIT_FAILURE);
