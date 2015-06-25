@@ -29,6 +29,7 @@ XFR_PRU             .set    14
     .retainrefs
     .global         main
 
+
 main:
 ; Enable the OCP master port
     LBCO    &r0, C4, 4, 4   ; Load SYSCFG into r0 using c4 constant
@@ -57,11 +58,12 @@ outter_loop:
 ; Fill message buffer 1
     LDI32   r27, LOOPS_PER_MSG      ; Load number of loops per message in r27
 
-inner_loop_1:
-    WBS     r30, 30                 ; Wait for PRU1 interrupt signal
-    SBCO    r0, C0, 0x24, 4         ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, r1, 96       ; Retrieve data from scratch pad
+inner_loop_1:
+    WBS     r31, 30                 ; Wait for PRU1 interrupt signal
+    SBCO    &r0, C0, 0x24, 4         ; Clear PRU1 interrupt
+
+    XIN     XFR_BANK0, &r1, 96       ; Retrieve data from scratch pad
     SBBO    &r1, r28, r29, 96       ; Write data to DDR RAM
     ADD     r29, r29, 96            ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
@@ -74,10 +76,10 @@ inner_loop_1:
     LDI32   r27, LOOPS_PER_MSG      ; Load number of loops per message in r27
 
 inner_loop_2:
-    WBS     r30, 30                 ; Wait for PRU1 interrupt signal
+    WBS     r31, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, r1, 96       ; Retrieve data from scratch pad
+    XIN     XFR_BANK0, &r1, 96      ; Retrieve data from scratch pad
     SBBO    &r1, r28, r29, 96       ; Write data to DDR RAM
     ADD     r29, r29, 96            ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
