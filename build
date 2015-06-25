@@ -1,10 +1,25 @@
 #!/bin/bash
 # Build and install device tree overlay
-../adc_driver/00build_dto
+# ../adc_driver/00build_dto
 
-# Build PRU firmwares
-pasm -b pru/adi131e08_pru0.asm
-pasm -b pru/adi131e08_pru1.asm
+# Build PRU0 firmwares
+## Compile to object file
+clpru -v3 --symdebug:none -c pru/adi131e08_pru0.asm
+## Link (or in the case of a single file, assign sections to memory)
+clpru adi131e08_pru0.obj -z bbb_pru.cmd --output_file=adi131e08_pru0.out
+## Produce hex file from linked .out file
+hexpru bin_pru0.cmd adi131e08_pru0.out
+
+# Build PRU1 firmwares
+## Compile to object file
+clpru -v3 --symdebug:none -c pru/adi131e08_pru1.asm
+## Link (or in the case of a single file, assign sections to memory)
+clpru adi131e08_pru1.obj -z bbb_pru.cmd --output_file=adi131e08_pru1.out
+## Produce hex file from linked .out file
+hexpru bin_pru1.cmd adi131e08_pru1.out
+
+## Remove intermediary files
+rm *.out *.obj
 
 # Build main program
 gcc pru/pru.c server/tcpServer.c main.c -o adi -lpthread -lprussdrv -O2 -Wall
