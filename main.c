@@ -159,7 +159,7 @@ int main(int argc, char *argv[]){
 
     /***** BEGIN MAIN PROGRAM *****/
     /* Start up PRU0 */
-    if (pru_start(PRU0, "pru/adi131e08_pru0.bin") != 0) {
+    if (pru_start(PRU0, "pru/ads131e08_pru0.bin") != 0) {
         fprintf(stderr, "Error starting PRU0.\n");
         close(clientSocket);
         pru_cleanup();
@@ -168,7 +168,7 @@ int main(int argc, char *argv[]){
     }
 
     /* Start up PRU1 */
-    if (pru_start(PRU1, "pru/adi131e08_pru1.bin") != 0) {
+    if (pru_start(PRU1, "pru/ads131e08_pru1.bin") != 0) {
         fprintf(stderr, "Error starting PRU1.\n");
         close(clientSocket);
         pru_cleanup();

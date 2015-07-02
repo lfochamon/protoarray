@@ -8,9 +8,9 @@ SPI_SCLK            .set    5  ; PRU1_5 GPIO2_11 P8_42
 SPI_MOSI            .set    0  ; PRU1_0 GPIO2_6  P8_45 (DIN)
 SPI_MISO            .set    3  ; PRU1_3 GPIO2_9  P8_44 (DOUT)
 SPI_CS              .set    7  ; PRU1_7 GPIO2_13 P8_40
-ADI_START           .set    4  ; PRU1_4 GPIO2_10 P8_41
-ADI_RESET           .set    2  ; PRU1_2 GPIO2_8  P8_43
-ADI_DRDY            .set    1  ; PRU1_1 GPIO2_7  P8_46
+ADS_START           .set    4  ; PRU1_4 GPIO2_10 P8_41
+ADS_RESET           .set    2  ; PRU1_2 GPIO2_8  P8_43
+ADS_DRDY            .set    1  ; PRU1_1 GPIO2_7  P8_46
 
 ; SPI_SCLK_DELAY = floor( (t_SCLK / 5 ns) / 4 ); SPI_SCLK_DELAY >= 3
 SPI_SCLK_DELAY      .set    9
@@ -37,45 +37,45 @@ XFR_PRU             .set    14
     .retainrefs
     .global         main
 
-; Include ADI131 driver
-    .include "adi131e08.inc"
+; Include ADS131 driver
+    .include "ads131e08.inc"
 
 main:
-; Start up sequence for the ADI
-    ADI_STARTUP
+; Start up sequence for the ADS
+    ADS_STARTUP
 
 ; Activate internal clock
-    ADI_WRITE_REG   CONFIG3, CONFIG3_MASK + PDB_REFBUF
-    ADI_WAIT        2000       ; Wait 20 us for the internal clock to start up
+    ADS_WRITE_REG   CONFIG3, CONFIG3_MASK + PDB_REFBUF
+    ADS_WAIT        2000       ; Wait 20 us for the internal clock to start up
 
-; Configure ADI
-    ADI_WRITE_REG   CONFIG1, CONFIG1_MASK + DR_32K      ; 16 bits @ 32 kHz, daisy-chain, disable clock output
-    ADI_WRITE_REG   CONFIG2, CONFIG2_MASK               ; external test signal, gain 1x, fclk / 2^21 (all defaults)
-    ADI_WRITE_REG   CH1SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 1 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH2SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 2 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH3SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 3 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH4SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 4 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH5SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 5 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH6SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 6 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH7SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 7 (PGA gain 1x, channel shorted)
-    ADI_WRITE_REG   CH8SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 8 (PGA gain 1x, channel shorted)
+; Configure ADS
+    ADS_WRITE_REG   CONFIG1, CONFIG1_MASK + DR_32K      ; 16 bits @ 32 kHz, daisy-chain, disable clock output
+    ADS_WRITE_REG   CONFIG2, CONFIG2_MASK               ; external test signal, gain 1x, fclk / 2^21 (all defaults)
+    ADS_WRITE_REG   CH1SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 1 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH2SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 2 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH3SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 3 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH4SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 4 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH5SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 5 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH6SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 6 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH7SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 7 (PGA gain 1x, channel shorted)
+    ADS_WRITE_REG   CH8SET,  CH_GAIN_1 + CH_SHORTED     ; Channel 8 (PGA gain 1x, channel shorted)
 
-; Put ADI back in continuous data conversion mode
+; Put ADS back in continuous data conversion mode
     LDI     r1.b0, RDATAC
     SPI_TX  r1.b0
 
 ; START = 1
-    SET     r30, r30, ADI_START
+    SET     r30, r30, ADS_START
 
 ; Start of main loop
 mainloop:
     ; Wait and retrieve data
-    ADI_GET_DATA16  r1, r2, r3, r4, r5
-    ADI_GET_DATA16  r1, r6, r7, r8, r9
-    ADI_GET_DATA16  r1, r10, r11, r12, r13
-    ADI_GET_DATA16  r1, r14, r15, r16, r17
-    ADI_GET_DATA16  r1, r18, r19, r20, r21
-    ADI_GET_DATA16  r1, r22, r23, r24, r25
+    ADS_GET_DATA16  r1, r2, r3, r4, r5
+    ADS_GET_DATA16  r1, r6, r7, r8, r9
+    ADS_GET_DATA16  r1, r10, r11, r12, r13
+    ADS_GET_DATA16  r1, r14, r15, r16, r17
+    ADS_GET_DATA16  r1, r18, r19, r20, r21
+    ADS_GET_DATA16  r1, r22, r23, r24, r25
 
     XOUT    XFR_BANK0, &r1, 100                         ; Send data to scratch pad
     LDI     r31.b0, PRU_INT_VALID + PRU1_PRU0_INTERRUPT ; Send interrupt to PRU0

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Build and install device tree overlay before running config
+# ./00build_dto
+
 # Stop unnecessary services
 sudo service apache2 stop
 sudo service cron stop
@@ -11,7 +14,7 @@ sudo service avahi-daemon stop
 sudo cpufreq-set -g performance
 
 # Activate PRU hardware
-sudo sh -c "echo CHAMON-ARRAY > $SLOTS"
+sudo sh -c "echo PROTO-ARRAY > $SLOTS"
 
 # Allocate additional RAM for the PRUs
 sudo rmmod uio_pruss
