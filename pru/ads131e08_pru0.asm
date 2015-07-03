@@ -53,21 +53,21 @@ main:
 
 ; Start main loop
 outter_loop:
-    LDI     r29, 0                  ; Initialize message RAM buffer pointer in r29
+    LDI     r29, 0                  ; Initialize RAM buffer pointer in r29
+
 
 ; Fill message buffer 1
     LDI32   r27, LOOPS_PER_MSG      ; Load number of loops per message in r27
 
-
 inner_loop_1:
     WBS     r31, 30                 ; Wait for PRU1 interrupt signal
-    SBCO    &r0, C0, 0x24, 4         ; Clear PRU1 interrupt
+    SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, &r1, 96       ; Retrieve data from scratch pad
+    XIN     XFR_BANK0, &r1, 96      ; Retrieve data from scratch pad
     SBBO    &r1, r28, r29, 96       ; Write data to DDR RAM
     ADD     r29, r29, 96            ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
-    QBNE    inner_loop_1, r27, 0    ; Loop if the message buffer has not been filled
+    QBNE    inner_loop_1, r27, 0    ; Loop if the message buffer is not full
 
     LDI     r31.b0, PRU_INT_VALID + PRU0_ARM_INTERRUPT  ; Send interrupt to host
 
@@ -83,7 +83,7 @@ inner_loop_2:
     SBBO    &r1, r28, r29, 96       ; Write data to DDR RAM
     ADD     r29, r29, 96            ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
-    QBNE    inner_loop_2, r27, 0    ; Loop if the message buffer has not been filled
+    QBNE    inner_loop_2, r27, 0    ; Loop if the message buffer is not full
 
     LDI     r31.b0, PRU_INT_VALID + PRU0_ARM_INTERRUPT  ; Send interrupt to host
 
