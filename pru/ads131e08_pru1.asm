@@ -1,8 +1,3 @@
-; Delay
-INS_PER_US          .set    200
-INS_PER_DELAY_LOOP  .set    2
-DELAY_US            .set    119 * (INS_PER_US / INS_PER_DELAY_LOOP)
-
 ; Pin definitions
 SPI_SCLK            .set    5       ; PRU1_5 GPIO2_11 P8_42
 SPI_MOSI            .set    0       ; PRU1_0 GPIO2_6  P8_45 (DIN)
