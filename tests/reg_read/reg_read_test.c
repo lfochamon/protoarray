@@ -44,8 +44,6 @@ int getMemInfo(unsigned int *addr, unsigned int *size)
 
 int main(int argc, char *argv[])
 {
-    int i;
-
     int fd;
     void *mem_map, *ram_addr;
     unsigned int addr, size;
@@ -158,8 +156,8 @@ int main(int argc, char *argv[])
     /* PRINT OUT ADS REGISTERS */
     printf("\nADS registers:\n");
 
-    reg_read = (uint8_t) ram_addr;
-    printf("ID:          %#04x (default = 0x??)\n", *(reg_read + 0));
+    reg_read = (uint8_t *) ram_addr;
+    printf("ID:          %#04x (default = 0x\?)\n", *(reg_read + 0));
     printf("CONFIG1:     %#04x (default = 0x91)\n", *(reg_read + 1));
     printf("CONFIG2:     %#04x (default = 0xE0)\n", *(reg_read + 2));
     printf("CONFIG3:     %#04x (default = 0x40)\n", *(reg_read + 3));
