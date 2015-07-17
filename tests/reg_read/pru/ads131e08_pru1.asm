@@ -33,7 +33,7 @@ XFR_PRU             .set    14
     .global         main
 
 ; Include ADS131 driver
-    .include "../../ads_driver/ads131e08.inc"
+    .include "ads131e08.inc"
 
 main:
 ; Start up sequence for the ADS
@@ -47,3 +47,6 @@ main:
 
 ; Stop PRU
     HALT
+
+; Setup function calls for ADS driver
+    ADS_INIT
