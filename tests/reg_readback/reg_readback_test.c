@@ -44,8 +44,6 @@ int getMemInfo(unsigned int *addr, unsigned int *size)
 
 int main(int argc, char *argv[])
 {
-    int i;
-
     int fd;
     void *mem_map, *ram_addr;
     unsigned int addr, size;
@@ -53,8 +51,6 @@ int main(int argc, char *argv[])
     uint32_t *pru0_mem;
 
     uint8_t *reg_read;
-
-    FILE *fp_buf;
 
 
     /* PRU code only works if executed as root */
@@ -144,10 +140,10 @@ int main(int argc, char *argv[])
     prussdrv_pru_clear_event(PRU_EVTOUT_0, PRU0_ARM_INTERRUPT);
 
     /* Print out ADS registers */
-    reg_read = (uint8_t) ram_addr;
+    reg_read = (uint8_t *) ram_addr;
 
     printf("\nADS registers before write:\n");
-    printf("ID:          %#04x (default = 0x??)\n", *(reg_read + 0));
+    printf("ID:          %#04x (default = 0x\?)\n", *(reg_read + 0));
     printf("CONFIG1:     %#04x (default = 0x91)\n", *(reg_read + 1));
     printf("CONFIG2:     %#04x (default = 0xE0)\n", *(reg_read + 2));
     printf("CONFIG3:     %#04x (default = 0x40)\n", *(reg_read + 3));
