@@ -1,8 +1,8 @@
 (export (version D)
   (design
     (source "D:/Projetos/00Current/Projeto FAPESP 2015/Array/Hardware/ProtoArray/proto_array.sch")
-    (date "18/06/2015 14:28:38")
-    (tool "Eeschema (2015-06-10 BZR 5730, Git 63c978d)-product")
+    (date "17/07/2015 20:04:10")
+    (tool "Eeschema (2015-07-06 BZR 5891, Git 351914d)-product")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
         (title "Mic array prototype")
@@ -89,8 +89,8 @@
       (tstamp 5565479F))
     (comp (ref C11)
       (value 22uF)
-      (footprint Capacitors_SMD:C_0805_HandSoldering)
-      (libsource (lib device) (part C))
+      (footprint Capacitors_Tantalum_SMD:TantalC_SizeB_EIA-3528_HandSoldering)
+      (libsource (lib device) (part CP1))
       (sheetpath (names /) (tstamps /))
       (tstamp 5565549D))
     (comp (ref C10)
@@ -346,6 +346,59 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 5568A498)))
   (libparts
+    (libpart (lib device) (part C)
+      (description "Unpolarized capacitor")
+      (footprints
+        (fp C?)
+        (fp C_????_*)
+        (fp C_????)
+        (fp SMD*_c)
+        (fp Capacitor*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) C))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part CP1)
+      (description "Polarised capacitor")
+      (footprints
+        (fp SMD*_Pol)
+        (fp c_elec*)
+        (fp C*elec)
+        (fp TantalC*)
+        (fp Elko*)
+        (fp CP*))
+      (fields
+        (field (name Reference) C)
+        (field (name Value) CP1))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib device) (part R)
+      (description Resistor)
+      (footprints
+        (fp R_*)
+        (fp Resistor_*))
+      (fields
+        (field (name Reference) R)
+        (field (name Value) R))
+      (pins
+        (pin (num 1) (name ~) (type passive))
+        (pin (num 2) (name ~) (type passive))))
+    (libpart (lib conn) (part CONN_01X03)
+      (footprints
+        (fp Pin_Header_Straight_1X03)
+        (fp Pin_Header_Angled_1X03)
+        (fp Socket_Strip_Straight_1X03)
+        (fp Socket_Strip_Angled_1X03))
+      (fields
+        (field (name Reference) P)
+        (field (name Value) CONN_01X03))
+      (pins
+        (pin (num 1) (name P1) (type passive))
+        (pin (num 2) (name P2) (type passive))
+        (pin (num 3) (name P3) (type passive))))
     (libpart (lib micarray) (part ADS131E08)
       (description "Analog Front-End (ADC, 16 bits - 24 bits, 1kSps - 64kSps)")
       (fields
@@ -528,67 +581,14 @@
         (field (name Reference) TP)
         (field (name Value) TESTPOINT))
       (pins
-        (pin (num 1) (name 1) (type passive))))
-    (libpart (lib device) (part R)
-      (description Resistor)
-      (footprints
-        (fp R_*)
-        (fp Resistor_*))
-      (fields
-        (field (name Reference) R)
-        (field (name Value) R))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib conn) (part CONN_01X03)
-      (footprints
-        (fp Pin_Header_Straight_1X03)
-        (fp Pin_Header_Angled_1X03)
-        (fp Socket_Strip_Straight_1X03)
-        (fp Socket_Strip_Angled_1X03))
-      (fields
-        (field (name Reference) P)
-        (field (name Value) CONN_01X03))
-      (pins
-        (pin (num 1) (name P1) (type passive))
-        (pin (num 2) (name P2) (type passive))
-        (pin (num 3) (name P3) (type passive))))
-    (libpart (lib device) (part C)
-      (description "Unpolarized capacitor")
-      (footprints
-        (fp C?)
-        (fp C_????_*)
-        (fp C_????)
-        (fp SMD*_c)
-        (fp Capacitor*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) C))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive))))
-    (libpart (lib device) (part CP1)
-      (description "Polarised capacitor")
-      (footprints
-        (fp SMD*_Pol)
-        (fp c_elec*)
-        (fp C*elec)
-        (fp TantalC*)
-        (fp Elko*)
-        (fp CP*))
-      (fields
-        (field (name Reference) C)
-        (field (name Value) CP1))
-      (pins
-        (pin (num 1) (name ~) (type passive))
-        (pin (num 2) (name ~) (type passive)))))
+        (pin (num 1) (name 1) (type passive)))))
   (libraries
-    (library (logical micarray)
-      (uri "D:\\Projetos\\00Current\\Projeto FAPESP 2015\\Array\\Hardware\\ProtoArray\\micarray.lib"))
+    (library (logical device)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
-    (library (logical device)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib")))
+    (library (logical micarray)
+      (uri "D:\\Projetos\\00Current\\Projeto FAPESP 2015\\Array\\Hardware\\ProtoArray\\micarray.lib")))
   (nets
     (net (code 1) (name "Net-(C34-Pad2)")
       (node (ref C34) (pin 2))

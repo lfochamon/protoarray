@@ -416,12 +416,12 @@ F 3 "" H 5700 2500 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C11
+L CP1 C11
 U 1 1 5565549D
 P 4350 2200
 F 0 "C11" H 4375 2300 50  0000 L CNN
 F 1 "22uF" H 4375 2100 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4388 2050 30  0001 C CNN
+F 2 "Capacitors_Tantalum_SMD:TantalC_SizeB_EIA-3528_HandSoldering" H 4388 2050 30  0001 C CNN
 F 3 "" H 4350 2200 60  0000 C CNN
 	1    4350 2200
 	1    0    0    -1  
