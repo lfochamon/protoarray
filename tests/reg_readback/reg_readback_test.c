@@ -9,7 +9,6 @@
 #include <prussdrv.h>
 #include <pruss_intc_mapping.h>
 
-#include "../../server/tcpServer.h"
 #include "../../pru/pru.h"
 
 #define PRU0 0
