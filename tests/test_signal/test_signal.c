@@ -11,10 +11,12 @@
 
 #include "../../pru/pru.h"
 
+#define MSG_SIZE (1000*1024)
+
 #define PRU0 0
 #define PRU1 1
 
-#define BUFFER_SIZE (1000*1024)
+#define BUFFER_SIZE (2*MSG_SIZE)
 #define RAM_BYTES BUFFER_SIZE
 #define RAM_SIZE (RAM_BYTES / 4)
 #define MAP_SIZE (RAM_BYTES + 4096UL)
@@ -153,7 +155,7 @@ int main(int argc, char *argv[])
     /* Dump buffer */
     printf("Dumpping buffer.\n");
     fp_buf = fopen("buff", "w");
-    fwrite(ram_addr, sizeof(uint32_t), 2*MSG_SIZE/4, fp_buf);
+    fwrite(ram_addr, sizeof(uint32_t), BUFFER_SIZE/4, fp_buf);
     fclose(fp_buf);
 
 
