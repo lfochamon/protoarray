@@ -35,11 +35,11 @@
                 pinctrl-single,pins = <
                     0x0b4 0x05    /* PRU1_5, P8_42, MODE 5, OUTPUT */
                     0x0a0 0x05    /* PRU1_0, P8_45, MODE 5, OUTPUT */
-                    0x0ac 0x26    /* PRU1_3, P8_44, MODE 6, INPUT  */
+                    0x0ac 0x2E    /* PRU1_3, P8_44, MODE 6, INPUT, DISABLE PU/PD */
                     0x0bc 0x05    /* PRU1_7, P8_40, MODE 5, OUTPUT */
                     0x0b0 0x05    /* PRU1_4, P8_41, MODE 5, OUTPUT */
                     0x0a8 0x05    /* PRU1_2, P8_43, MODE 5, OUTPUT */
-                    0x0a4 0x26    /* PRU1_1, P8_46, MODE 6, INPUT  */
+                    0x0a4 0x2E    /* PRU1_1, P8_46, MODE 6, INPUT, DISABLE PU/PD */
                 >;
             };
         };
