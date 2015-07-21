@@ -47,24 +47,24 @@ main:
 ; 16 bits @ 32 kHz, daisy-chain, disable clock output
     ADS_WRITE_REG   CONFIG1, CONFIG1_MASK + DR_32K
 ; Internal test signal, gain 1x, fclk / 2^21
-    ADS_WRITE_REG   CONFIG2, CONFIG2_MASK + INT_TEST
+    ADS_WRITE_REG   CONFIG2, CONFIG2_MASK + INT_TEST + TEST_FREQ_21
 
-; Channel 1-3, PGA gain 1x, test signal (square wave, 2048 MHz/2^21 = 976.56 Hz)
+; Channel 1-3, PGA gain 1x, test signal (square wave, 2.048 MHz/2^21 = 0.98 Hz)
     ADS_WRITE_REG   CH1SET, CH_GAIN_1 + CH_TEST
-    ADS_WRITE_REG   CH2SET, CH_GAIN_1 + CH_TEST
-    ADS_WRITE_REG   CH3SET, CH_GAIN_1 + CH_TEST
+    ADS_WRITE_REG   CH2SET, CH_GAIN_4 + CH_TEST
+    ADS_WRITE_REG   CH3SET, CH_GAIN_8 + CH_TEST
 ; Channel 4, PGA gain 1x, power supply (DVDD/4 = 0.825 V)
-    ADS_WRITE_REG   CH4SET, CH_GAIN_1 + CH_TEST
+    ADS_WRITE_REG   CH4SET, CH_GAIN_1 + CH_VDD
 ; Channel 5, PGA gain 1x, power supply (AVDD/2 = 2.5 V)
-    ADS_WRITE_REG   CH5SET, CH_GAIN_1 + CH_TEST
+    ADS_WRITE_REG   CH5SET, CH_GAIN_1 + CH_VDD
 ; Channel 6, PGA gain 1x, temperature sensor [(uV - 145300)/490 + 25 degC]
     ADS_WRITE_REG   CH6SET, CH_GAIN_1 + CH_TEMP
-; Channel 7-8, PGA gain 1x, test signal (square wave, 2048 MHz/2^21 = 976.56 Hz)
-    ADS_WRITE_REG   CH7SET, CH_GAIN_1 + CH_TEST
+; Channel 7-8, PGA gain 1x, test signal (square wave, 2.048 MHz/2^21 = 0.98 Hz)
+    ADS_WRITE_REG   CH7SET, CH_GAIN_12 + CH_TEST
     ADS_WRITE_REG   CH8SET, CH_GAIN_1 + CH_TEST
 
 ; Put ADS back in continuous data conversion mode
-    ADS_SEND_CMD    RDATAC
+    ADS_SEND_CMD    ADS_CMD_RDATAC
 
 ; START = 1
     SET     r30, r30, ADS_START
