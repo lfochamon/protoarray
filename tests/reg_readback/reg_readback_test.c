@@ -142,10 +142,11 @@ int main(int argc, char *argv[])
     reg_read = (uint8_t *) ram_addr;
 
     printf("\nADS registers before write:\n");
-    printf("ID:          %#04x (default = 0x\?)\n", *(reg_read + 0));
+    printf("ID:          %#04x (default = 0xD2)\n", *(reg_read + 0));
     printf("CONFIG1:     %#04x (default = 0x91)\n", *(reg_read + 1));
     printf("CONFIG2:     %#04x (default = 0xE0)\n", *(reg_read + 2));
-    printf("CONFIG3:     %#04x (default = 0x40)\n", *(reg_read + 3));
+    /* Datasheet claims that CONFIG3 should end in 00, but it ends in 01. */
+    printf("CONFIG3:     %#04x (default = 0x41)\n", *(reg_read + 3));
     printf("FAULT:       %#04x (default = 0x00)\n", *(reg_read + 4));
     printf("CH1SET:      %#04x (default = 0x10)\n", *(reg_read + 5));
     printf("CH2SET:      %#04x (default = 0x10)\n", *(reg_read + 6));
@@ -168,7 +169,8 @@ int main(int argc, char *argv[])
     printf("ID:          %#04x (unchanged)\n",      *(reg_read + 0));
     printf("CONFIG1:     %#04x (default = 0x95)\n", *(reg_read + 1));
     printf("CONFIG2:     %#04x (default = 0xE3)\n", *(reg_read + 2));
-    printf("CONFIG3:     %#04x (default = 0xC0)\n", *(reg_read + 3));
+    /* Datasheet claims that CONFIG3 should end in 00, but it ends in 01. */
+    printf("CONFIG3:     %#04x (default = 0xC1)\n", *(reg_read + 3));
     printf("FAULT:       %#04x (unchanged)\n",      *(reg_read + 4));
     printf("CH1SET:      %#04x (default = 0x13)\n", *(reg_read + 5));
     printf("CH2SET:      %#04x (default = 0x23)\n", *(reg_read + 6));
