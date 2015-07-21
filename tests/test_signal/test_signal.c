@@ -14,7 +14,7 @@
 #define PRU0 0
 #define PRU1 1
 
-#define BUFFER_SIZE (4*1024)
+#define BUFFER_SIZE (1000*1024)
 #define RAM_BYTES BUFFER_SIZE
 #define RAM_SIZE (RAM_BYTES / 4)
 #define MAP_SIZE (RAM_BYTES + 4096UL)
