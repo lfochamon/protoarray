@@ -172,7 +172,8 @@ int main(int argc, char *argv[])
     printf("CH8SET:      %#04x (default = 0x10)\n", *(reg_read + 12));
     printf("FAULT_STATP: %#04x (default = 0x00)\n", *(reg_read + 13));
     printf("FAULT_STATN: %#04x (default = 0x00)\n", *(reg_read + 14));
-    printf("GPIO:        %#04x (default = 0x0F)\n", *(reg_read + 15));
+    /* Datasheet claims that GPIO should be 0x0F, but it ends in 0x00. */
+    printf("GPIO:        %#04x (default = 0x00)\n", *(reg_read + 15));
 
 
     /* SHARED RAM CLEAN UP */

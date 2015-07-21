@@ -40,7 +40,7 @@ main:
     ADS_STARTUP
 
 ; Read in all ADS registers
-    ADS_READ_ALL r1.b0, r1.b1, r1.b2, r1.b3, r2.b0, r2.b1, r2.b2, r2.b3, r3.b0, r3.b1, r3.b2, r3.b3, r4.b0, r4.b1, r4.b2, r4.b3
+    ADS_READ_ALL    r1.b0, r1.b1, r1.b2, r1.b3, r2.b0, r2.b1, r2.b2, r2.b3, r3.b0, r3.b1, r3.b2, r3.b3, r4.b0, r4.b1, r4.b2, r4.b3
 
     XOUT    XFR_BANK0, &r1, 16                          ; Save to scratch pad
     LDI     r31.b0, PRU_INT_VALID + PRU1_PRU0_INTERRUPT ; Signal PRU0
