@@ -8,7 +8,7 @@ ADS_RESET           .set    2       ; PRU1_2 GPIO2_8  P8_43
 ADS_DRDY            .set    1       ; PRU1_1 GPIO2_7  P8_46
 
 ; SPI_SCLK_DELAY = floor( (t_SCLK / 5 ns) / 4 ); SPI_SCLK_DELAY >= 3
-SPI_SCLK_DELAY      .set    9
+SPI_SCLK_DELAY      .set    15
 
 ; Interrupt
 PRU_INT_VALID       .set    32
@@ -40,9 +40,9 @@ main:
     ADS_STARTUP
 
 ; Read in all ADS registers
-    ADS_READ_ALL r0.b3, r0.b2, r0.b1, r0.b0, r1.b3, r1.b2, r1.b1, r1.b0, r2.b3, r2.b2, r2.b1, r2.b0, r3.b3, r3.b2, r3.b1, r3.b0
+    ADS_READ_ALL r1.b0, r1.b1, r1.b2, r1.b3, r2.b0, r2.b1, r2.b2, r2.b3, r3.b0, r3.b1, r3.b2, r3.b3, r4.b0, r4.b1, r4.b2, r4.b3
 
-    XOUT    XFR_BANK0, &r0, 4*4                         ; Save to scratch pad
+    XOUT    XFR_BANK0, &r1, 16                          ; Save to scratch pad
     LDI     r31.b0, PRU_INT_VALID + PRU1_PRU0_INTERRUPT ; Signal PRU0
 
 ; Stop PRU
