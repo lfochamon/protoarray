@@ -1,6 +1,6 @@
 ; Buffer
-MSG_SIZE            .set    999*1024
-LOOPS_PER_MSG       .set    MSG_SIZE/96
+MSG_SIZE            .set    1000*1024
+LOOPS_PER_MSG       .set    MSG_SIZE/100
 
 ; Interrupt
 PRU_INT_VALID       .set    32
@@ -59,9 +59,9 @@ inner_loop_1:
     WBS     r31, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, &r2, 96      ; Retrieve data from scratch pad
-    SBBO    &r2, r28, r29, 96       ; Write data to DDR RAM
-    ADD     r29, r29, 96            ; Increment message RAM buffer pointer
+    XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad
+    SBBO    &r1, r28, r29, 100      ; Write data to DDR RAM
+    ADD     r29, r29, 100           ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
     QBNE    inner_loop_1, r27, 0    ; Loop if the message buffer is not full
 
@@ -75,9 +75,9 @@ inner_loop_2:
     WBS     r31, 30                 ; Wait for PRU1 interrupt signal
     SBCO    &r0, C0, 0x24, 4        ; Clear PRU1 interrupt
 
-    XIN     XFR_BANK0, &r2, 96      ; Retrieve data from scratch pad
-    SBBO    &r2, r28, r29, 96       ; Write data to DDR RAM
-    ADD     r29, r29, 96            ; Increment message RAM buffer pointer
+    XIN     XFR_BANK0, &r1, 100     ; Retrieve data from scratch pad
+    SBBO    &r1, r28, r29, 100      ; Write data to DDR RAM
+    ADD     r29, r29, 100           ; Increment message RAM buffer pointer
     SUB     r27, r27, 1             ; Decrement message loop counter
     QBNE    inner_loop_2, r27, 0    ; Loop if the message buffer is not full
 
