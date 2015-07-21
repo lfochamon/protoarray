@@ -42,7 +42,8 @@ main:
 ; Configure ADS
 ; Activate internal clock
     ADS_WRITE_REG   CONFIG3, CONFIG3_MASK + PDB_REFBUF
-    ADS_WAIT        2000       ; Wait 20 us for the internal clock to start up
+; Wait 20 us for the internal reference to start
+    ADS_WAIT        2000
 ; 16 bits @ 32 kHz, daisy-chain, disable clock output
     ADS_WRITE_REG   CONFIG1, CONFIG1_MASK + DR_32K
 ; Internal test signal, gain 1x, fclk / 2^21
@@ -63,8 +64,7 @@ main:
     ADS_WRITE_REG   CH8SET, CH_GAIN_1 + CH_TEST
 
 ; Put ADS back in continuous data conversion mode
-    LDI     r28.b0, RDATAC
-    JAL     r28.w2, spi_tx_call
+    ADS_SEND_CMD    RDATAC
 
 ; START = 1
     SET     r30, r30, ADS_START
