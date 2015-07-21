@@ -158,7 +158,8 @@ int main(int argc, char *argv[])
     printf("CH8SET:      %#04x (default = 0x10)\n", *(reg_read + 12));
     printf("FAULT_STATP: %#04x (default = 0x00)\n", *(reg_read + 13));
     printf("FAULT_STATN: %#04x (default = 0x00)\n", *(reg_read + 14));
-    printf("GPIO:        %#04x (default = 0x0F)\n", *(reg_read + 15));
+    /* Datasheet claims that GPIO should be 0x0F, but it ends in 0x00. */
+    printf("GPIO:        %#04x (default = 0x00)\n", *(reg_read + 15));
 
     /* Wait for PRU_EVTOUT_0 and send shared RAM data */
     prussdrv_pru_wait_event(PRU_EVTOUT_0);
@@ -166,23 +167,24 @@ int main(int argc, char *argv[])
 
     /* Print out ADS registers */
     printf("\nADS registers after write:\n");
-    printf("ID:          %#04x (unchanged)\n",      *(reg_read + 0));
-    printf("CONFIG1:     %#04x (default = 0x95)\n", *(reg_read + 1));
-    printf("CONFIG2:     %#04x (default = 0xE3)\n", *(reg_read + 2));
+    printf("ID:          %#04x (0xD2)\n", *(reg_read + 0));
+    printf("CONFIG1:     %#04x (0x95)\n", *(reg_read + 1));
+    printf("CONFIG2:     %#04x (0xE3)\n", *(reg_read + 2));
     /* Datasheet claims that CONFIG3 should end in 00, but it ends in 01. */
-    printf("CONFIG3:     %#04x (default = 0xC1)\n", *(reg_read + 3));
-    printf("FAULT:       %#04x (unchanged)\n",      *(reg_read + 4));
-    printf("CH1SET:      %#04x (default = 0x13)\n", *(reg_read + 5));
-    printf("CH2SET:      %#04x (default = 0x23)\n", *(reg_read + 6));
-    printf("CH3SET:      %#04x (default = 0x13)\n", *(reg_read + 7));
-    printf("CH4SET:      %#04x (default = 0x23)\n", *(reg_read + 8));
-    printf("CH5SET:      %#04x (default = 0x13)\n", *(reg_read + 9));
-    printf("CH6SET:      %#04x (default = 0x23)\n", *(reg_read + 10));
-    printf("CH7SET:      %#04x (default = 0x13)\n", *(reg_read + 11));
-    printf("CH8SET:      %#04x (default = 0x23)\n", *(reg_read + 12));
-    printf("FAULT_STATP: %#04x (unchanged)\n",      *(reg_read + 13));
-    printf("FAULT_STATN: %#04x (unchanged)\n",      *(reg_read + 14));
-    printf("GPIO:        %#04x (unchanged)\n",      *(reg_read + 15));
+    printf("CONFIG3:     %#04x (0xC1)\n", *(reg_read + 3));
+    printf("FAULT:       %#04x (0x00)\n", *(reg_read + 4));
+    printf("CH1SET:      %#04x (0x13)\n", *(reg_read + 5));
+    printf("CH2SET:      %#04x (0x23)\n", *(reg_read + 6));
+    printf("CH3SET:      %#04x (0x13)\n", *(reg_read + 7));
+    printf("CH4SET:      %#04x (0x23)\n", *(reg_read + 8));
+    printf("CH5SET:      %#04x (0x13)\n", *(reg_read + 9));
+    printf("CH6SET:      %#04x (0x23)\n", *(reg_read + 10));
+    printf("CH7SET:      %#04x (0x13)\n", *(reg_read + 11));
+    printf("CH8SET:      %#04x (0x23)\n", *(reg_read + 12));
+    printf("FAULT_STATP: %#04x (0x00)\n", *(reg_read + 13));
+    printf("FAULT_STATN: %#04x (0x00)\n", *(reg_read + 14));
+    /* Datasheet claims that GPIO should be 0x0F, but it ends in 0x00. */
+    printf("GPIO:        %#04x (0x00)\n", *(reg_read + 15));
 
 
     /* PRU CLEAN UP */
