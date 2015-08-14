@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:proto_array-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -1746,7 +1747,7 @@ F 3 "" H 800 4000 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L TLV70233DBV U5
+L TLV70233DBV-2 U5
 U 1 1 55B9C715
 P 1550 4150
 F 0 "U5" H 1300 4350 40  0000 C CNN
