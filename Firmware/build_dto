@@ -1,0 +1,3 @@
+#!/bin/bash
+dtc -O dtb -o PROTO-ARRAY-00A0.dtbo -b 0 -@ PROTO-ARRAY-00A0.dts
+sudo cp PROTO-ARRAY-00A0.dtbo /lib/firmware
