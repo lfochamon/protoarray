@@ -1,0 +1,29 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ADS131E08
+D Analog Front-End (ADC, 16 bits - 24 bits, 1kSps - 64kSps)
+K ADC, 16 bits, 24 bits, AFE
+$ENDCMP
+#
+$CMP AGND
+K POWER, PWR
+$ENDCMP
+#
+$CMP AVDD
+K POWER, PWR
+$ENDCMP
+#
+$CMP BEAGLEBONEBLACK
+D BeagleBone Black headers
+K BeagleBone Black, BeagleBone, Headers, Cape
+$ENDCMP
+#
+$CMP DGND
+K POWER, PWR
+$ENDCMP
+#
+$CMP DVDD
+K POWER, PWR
+$ENDCMP
+#
+#End Doc Library
